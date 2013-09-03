@@ -65,5 +65,6 @@ class SystemInfoJabberBot(JabberBot):
  
 username = 'coffeemaker@jabber.iitsp.com'
 password = 'Coffee'
+debug = 'false'
 bot = SystemInfoJabberBot(username,password)
 bot.serve_forever()

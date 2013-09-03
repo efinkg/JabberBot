@@ -32,6 +32,12 @@ def barista_makeCoffee(order):
                 SendSmallStartEmail()
                 print 'Starting Small Coffee'
 
+            if len(orderList) > 4 and orderList[3] == 'thermos':
+                size = 20
+                coffee_maker.makeCoffee(size)
+                SendThermosStartEmail()
+                print 'Starting Small Coffee'
+
             #if len(orderList) == 4 and orderList[4] == 'coffee'
             #    do_command('coffee')
             #    print '/echo /push Starting Coffee'

@@ -1,11 +1,11 @@
 #! /usr/bin/env python
 from jabberbot import JabberBot, botcmd
-from barista_bot import barista_makeCoffee
+from barista_bot_control import barista_makeCoffee
 import datetime
 import sys
 import os
 
-os.system('python MakeCoffee.py')
+#os.system('python MakeCoffee.py')
 
 class SystemInfoJabberBot(JabberBot):
     @botcmd
@@ -38,7 +38,7 @@ class SystemInfoJabberBot(JabberBot):
     
     @botcmd
     def got(self, mess, args):
-        """Tells you your username"""
+        """This is for Glass to stop Stupid Looping"""
         message = str(mess.getBody())
         listMessage = message.split(" ")
         if listMessage[1] == 'TEXT':

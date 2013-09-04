@@ -1,0 +1,18 @@
+import RPi.GPIO as GPIO
+import time
+
+KETTLE = 18
+SOLENOID = 17
+GRINDER = 27
+PUMP = 22
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(KETTLE, GPIO.OUT)
+GPIO.setup(SOLENOID, GPIO.OUT)
+GPIO.setup(GRINDER, GPIO.OUT)
+GPIO.setup(PUMP, GPIO.OUT)
+
+
+GPIO.output(GRINDER, GPIO.HIGH)
+time.sleep(20)
+GPIO.output(GRINDER, GPIO.LOW)

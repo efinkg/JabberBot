@@ -14,10 +14,13 @@ def barista_makeCoffee(order):
     
     orderList = order.split(" ")
     
-    if len(orderList) >1 and orderList[0] == 'barista':#'/etc/jabberd/cmds/barista':
+    if len(orderList) >1 and orderList[0] == 'barista' or orderList[0] == 'Barista':
         #Change this to the location/name of the desired first word of the jabber message
         #'barista make/start a small/large coffee"
         if orderList[1] == 'start' or orderList[1] == 'make': #natural systax
+            if orderList[2] == 'me': #Allows use of 'Make a Coffee' or 'Make me a coffee" by dropping 'me' if it appears
+                del orderList[2]
+                
             if len(orderList) > 4 and orderList[3] == 'large' or orderList[3] == 'pot': #natural systax
                 #do_command('coffeelarge')
                 size = 34

@@ -7,7 +7,7 @@ def SendSmallStartEmail():
    # Change to your own account information
    to = 'ethan.glassman@gmail.com'
    gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Caffeine'
+   gmail_password = 'password' #Not my real password
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()
@@ -37,7 +37,7 @@ def SendLargeStartEmail():
    # Change to your own account information
    to = 'ethan.glassman@gmail.com'
    gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Caffeine'
+   gmail_password = 'password' #Not my real password
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()
@@ -67,7 +67,7 @@ def SendThermosStartEmail():
    # Change to your own account information
    to = 'ethan.glassman@gmail.com'
    gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Caffeine'
+   gmail_password = 'password' #Not my real password
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()
@@ -98,7 +98,7 @@ def SendCoffeeDoneEmail():
    # Change to your own account information
    to = 'ethan.glassman@gmail.com'
    gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Caffeine'
+   gmail_password = 'password' #Not my real password
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()
@@ -128,7 +128,7 @@ def SendCoffeeCancelledEmail():
    # Change to your own account information
    to = 'ethan.glassman@gmail.com'
    gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Caffeine'
+   gmail_password = 'password' #Not my real password
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()

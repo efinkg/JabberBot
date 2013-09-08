@@ -45,9 +45,8 @@ class SystemInfoJabberBot(JabberBot):
             print 'Aint Nobody got Time for That'
         else:
             return 'Got milk?'
-
     @botcmd
-    def barista(self, mess, args):
+    def alfred(self, mess, args):
         '''Makes Coffee'''
         '''euid = os.geteuid()
         if euid != 0:
@@ -59,12 +58,14 @@ class SystemInfoJabberBot(JabberBot):
         barista_makeCoffee(order)
         #return str(mess)
         return 'I have forwarded your order to the barista.'
-        
-                
-        
+    '''
+    @botcmd
+    def nextalarm(self, mess, args):
+        return alarm_clock.next_alarm()                
+'''        
  
 username = 'coffeemaker@jabber.iitsp.com'
-password = 'password' #Not my real password.
+password = 'Coffee'
 debug = 'false'
 bot = SystemInfoJabberBot(username,password)
 bot.serve_forever()

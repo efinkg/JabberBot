@@ -7,15 +7,15 @@ from coffeetimethreading import CoffeeMaker
 from CoffeeEmail import SendSmallStartEmail
 from CoffeeEmail import SendLargeStartEmail
 from CoffeeEmail import SendCoffeeCancelledEmail
-
 coffee_maker = CoffeeMaker()
 
 def barista_makeCoffee(order):
-    
     orderList = order.split(" ")
-    
-    if len(orderList) >1 and orderList[0] == 'barista' or orderList[0] == 'Barista':
-        #Change this to the location/name of the desired first word of the jabber message
+    #print orderList
+
+    if len(orderList) > 1:   # and orderList[0] == 'barista' or orderList[0] == 'Barista':
+                            # I am removing this word to make changing the name of the Press easier
+                            #Change this to the location/name of the desired first word of the jabber message
         #'barista make/start a small/large coffee"
         if orderList[1] == 'start' or orderList[1] == 'make': #natural systax
             if orderList[2] == 'me': #Allows use of 'Make a Coffee' or 'Make me a coffee" by dropping 'me' if it appears
@@ -49,7 +49,8 @@ def barista_makeCoffee(order):
             coffee_maker.force_stop()
             SendCoffeeCancelledEmail()
             print 'Stopping Coffee'
-            
-    #if len(orderList) == 1 and orderList[1] == 'stop':
-    #    do_command('killall')
-    #    print '/echo /push Stopping Coffee'
+        
+#if len(orderList) == 1 and orderList[1] == 'stop':
+#    do_command('killall')
+#    print '/echo /push Stopping Coffee'
+

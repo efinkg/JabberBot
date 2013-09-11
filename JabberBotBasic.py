@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 from jabberbot import JabberBot, botcmd
 from barista_bot_control import barista_makeCoffee
+from config import jabberUsername, jabberPassword
 import datetime
 import sys
 import os
@@ -63,9 +64,7 @@ class SystemInfoJabberBot(JabberBot):
     def nextalarm(self, mess, args):
         return alarm_clock.next_alarm()                
 '''        
- 
-username = 'coffeemaker@jabber.iitsp.com'
-password = 'Coffee'
+
 debug = 'false'
-bot = SystemInfoJabberBot(username,password)
+bot = SystemInfoJabberBot(jabberUsername(),jabberPassword())
 bot.serve_forever()

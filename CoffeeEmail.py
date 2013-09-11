@@ -1,3 +1,5 @@
+from config import emailSenderUsername, emailSenderPassword, emailRecipient
+
 def SendSmallStartEmail():
    import subprocess
    import smtplib
@@ -5,9 +7,9 @@ def SendSmallStartEmail():
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = 'ethan.glassman@gmail.com'
-   gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Coffee'
+   to = emailRecipient()
+   gmail_user = emailSenderUsername()
+   gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()
@@ -20,7 +22,7 @@ def SendSmallStartEmail():
    data = p.communicate()
    split_data = data[0].split()
    ipaddr = split_data[split_data.index('src')+1]
-   my_ip = 'Your Small Coffee Is Started'
+   my_ip = 'I am Making you a Cup of Coffee, Sir'
    msg = MIMEText(my_ip)
    msg['Subject'] = 'Coffee Time'
    msg['From'] = gmail_user
@@ -35,9 +37,9 @@ def SendLargeStartEmail():
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = 'ethan.glassman@gmail.com'
-   gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Coffee'
+   to = emailRecipient()
+   gmail_user = emailSenderUsername()
+   gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()
@@ -50,7 +52,7 @@ def SendLargeStartEmail():
    data = p.communicate()
    split_data = data[0].split()
    ipaddr = split_data[split_data.index('src')+1]
-   my_ip = 'Your Large Coffee Is Started'
+   my_ip = 'I am Making you a Pot of Coffee, Sir'
    msg = MIMEText(my_ip)
    msg['Subject'] = 'Coffee Time'
    msg['From'] = gmail_user
@@ -65,9 +67,9 @@ def SendThermosStartEmail():
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = 'ethan.glassman@gmail.com'
-   gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Coffee'
+   to = emailRecipient()
+   gmail_user = emailSenderUsername()
+   gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()
@@ -80,7 +82,7 @@ def SendThermosStartEmail():
    data = p.communicate()
    split_data = data[0].split()
    ipaddr = split_data[split_data.index('src')+1]
-   my_ip = 'I am Making You a Thermos of Coffee'
+   my_ip = 'I am Making You a Thermos of Coffee, Sir'
    msg = MIMEText(my_ip)
    msg['Subject'] = 'Coffee Time'
    msg['From'] = gmail_user
@@ -96,9 +98,9 @@ def SendCoffeeDoneEmail():
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = 'ethan.glassman@gmail.com'
-   gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Coffee'
+   to = emailRecipient()
+   gmail_user = emailSenderUsername()
+   gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()
@@ -111,7 +113,7 @@ def SendCoffeeDoneEmail():
    data = p.communicate()
    split_data = data[0].split()
    ipaddr = split_data[split_data.index('src')+1]
-   my_ip = 'Your Coffee Is Ready'
+   my_ip = 'Your Coffee Is Ready, Sir'
    msg = MIMEText(my_ip)
    msg['Subject'] = 'Coffee Time'
    msg['From'] = gmail_user
@@ -126,9 +128,9 @@ def SendCoffeeCancelledEmail():
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = 'ethan.glassman@gmail.com'
-   gmail_user = 'autocoffeemaker@gmail.com'
-   gmail_password = 'Coffee'
+   to = emailRecipient()
+   gmail_user = emailSenderUsername()
+   gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
    smtpserver.ehlo()
    smtpserver.starttls()
@@ -141,7 +143,7 @@ def SendCoffeeCancelledEmail():
    data = p.communicate()
    split_data = data[0].split()
    ipaddr = split_data[split_data.index('src')+1]
-   my_ip = 'Your Coffee Is Canceled'
+   my_ip = 'Your Coffee Is Canceled, Sir'
    msg = MIMEText(my_ip)
    msg['Subject'] = 'Coffee Time'
    msg['From'] = gmail_user

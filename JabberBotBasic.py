@@ -2,11 +2,10 @@
 from jabberbot import JabberBot, botcmd
 from barista_bot_control import barista_makeCoffee
 from config import jabberUsername, jabberPassword
+from howMuch import coffeeMade, clearCoffeeMade
 import datetime
 import sys
 import os
-
-#os.system('python MakeCoffee.py')
 
 class SystemInfoJabberBot(JabberBot):
     @botcmd
@@ -59,6 +58,14 @@ class SystemInfoJabberBot(JabberBot):
         barista_makeCoffee(order)
         #return str(mess)
         return 'I have forwarded your order to the barista.'
+
+    @botcmd
+    def howmuch(self, mess, args):
+        print 'I am reading your coffee usage'
+        volMade = coffeeMade()
+        print volMade
+        return 'I have made %d liters of coffee since last reboot' %volMade
+    
     '''
     @botcmd
     def nextalarm(self, mess, args):

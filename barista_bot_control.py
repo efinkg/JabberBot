@@ -7,6 +7,7 @@ from coffeetimethreading import CoffeeMaker
 from CoffeeEmail import SendSmallStartEmail
 from CoffeeEmail import SendLargeStartEmail
 from CoffeeEmail import SendCoffeeCancelledEmail
+
 coffee_maker = CoffeeMaker()
 
 def barista_makeCoffee(order):

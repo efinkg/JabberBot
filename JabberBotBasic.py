@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 from jabberbot import JabberBot, botcmd
-from barista_bot_control import barista_makeCoffee
+from barista_bot_control import barista_makeCoffee, saidPlease
 from config import jabberUsername, jabberPassword
 from howMuch import coffeeMade, coffeeMadeTotal
 import datetime
@@ -48,16 +48,14 @@ class SystemInfoJabberBot(JabberBot):
     @botcmd
     def alfred(self, mess, args):
         '''Makes Coffee'''
-        '''euid = os.geteuid()
-        if euid != 0:
-            #print "Script not started as root. Running sudo.."
-            args = ['sudo', sys.executable] + sys.argv + [os.environ]
-            # the next line replaces the currently-running process with the sudo
-            os.execlpe('sudo', *args)'''
+        user = mess.getFrom().getStripped()
         order = mess.getBody()
-        barista_makeCoffee(order)
-        #return str(mess)
-        return 'I have forwarded your order to the barista.'
+        if user == 'efinkg@jabber.iitsp.com' or saidPlease(order) == 'yes':
+            barista_makeCoffee(order)
+            #return str(mess)
+            return 'I have forwarded your order to the barista.'
+        return 'Say Please.'
+    
 
     @botcmd
     def howmuch(self, mess, args):

@@ -10,6 +10,17 @@ from CoffeeEmail import SendCoffeeCancelledEmail
 
 coffee_maker = CoffeeMaker()
 
+def saidPlease(order):
+    orderList = order.split(" ")
+    listLength = len(orderList)
+    print orderList[(listLength-1)]
+    if orderList[1] == 'stop':
+            return 'yes'
+    if orderList[(listLength-1)] == 'please' or orderList[(listLength-1)] == 'Please':
+        print 'yes'
+        return 'yes'
+    return 'no'
+
 def barista_makeCoffee(order):
     orderList = order.split(" ")
     #print orderList

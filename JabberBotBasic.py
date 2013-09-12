@@ -70,9 +70,12 @@ class SystemInfoJabberBot(JabberBot):
     @botcmd
     def howmuchtotal(self, mess, args):
         '''How much coffee has been made ever'''
-        volMadeTotal = coffeeMadeTotal()
-        print volMadeTotal
-        return 'I have made %d liters of coffee since I started counting' %volMadeTotal
+        user = mess.getFrom().getStripped()
+        if user == 'efinkg@jabber.iitsp.com':
+            volMadeTotal = coffeeMadeTotal()
+            print volMadeTotal
+            return 'I have made %d liters of coffee since I started counting' %volMadeTotal
+        return 'I am sorry, sir, that is strictly need-to-know'
     
     '''
     @botcmd

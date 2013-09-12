@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 from jabberbot import JabberBot, botcmd
 from barista_bot_control import barista_makeCoffee, saidPlease
-from config import jabberUsername, jabberPassword
+from config import jabberUsername, jabberPassword, approvedUser, approvedUser2
 from howMuch import coffeeMade, coffeeMadeTotal
 import datetime
 import sys
@@ -50,7 +50,7 @@ class SystemInfoJabberBot(JabberBot):
         '''Makes Coffee'''
         user = mess.getFrom().getStripped()
         order = mess.getBody()
-        if user == 'efinkg@jabber.iitsp.com' or saidPlease(order) == 'yes':
+        if user == approvedUser() or approvedUser2() or saidPlease(order) == 'yes':
             barista_makeCoffee(order)
             #return str(mess)
             return 'I have forwarded your order to the barista.'
@@ -69,7 +69,7 @@ class SystemInfoJabberBot(JabberBot):
     def howmuchtotal(self, mess, args):
         '''How much coffee has been made ever'''
         user = mess.getFrom().getStripped()
-        if user == 'efinkg@jabber.iitsp.com':
+        if user == approvedUser() or approvedUser2():
             volMadeTotal = coffeeMadeTotal()
             print volMadeTotal
             return 'I have made %d liters of coffee since I started counting' %volMadeTotal

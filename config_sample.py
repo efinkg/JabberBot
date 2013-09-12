@@ -16,3 +16,6 @@ def jabberUsername(): #This is the jabber account used for the JabberBot
 
 def jabberPassword(): #This is the password for the jabber account used for the JabberBot
     return 'password'
+
+def approvedUser():  #This user is approved to use casual messages, get total coffee made
+    return 'username@sample.com'

@@ -2,7 +2,7 @@
 from jabberbot import JabberBot, botcmd
 from barista_bot_control import barista_makeCoffee
 from config import jabberUsername, jabberPassword
-from howMuch import coffeeMade, clearCoffeeMade
+from howMuch import coffeeMade, clearCoffeeMade, coffeeMadeTotal
 import datetime
 import sys
 import os
@@ -65,6 +65,12 @@ class SystemInfoJabberBot(JabberBot):
         volMade = coffeeMade()
         print volMade
         return 'I have made %d liters of coffee since last reboot' %volMade
+
+    @botcmd
+    def howmuchtotal(self, mess, args):
+        volMadeTotal = coffeeMadeTotal()
+        print volMadeTotal
+        return 'I have made %d liters of coffee since I started counting' %volMadeTotal
     
     '''
     @botcmd

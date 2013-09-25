@@ -1,6 +1,10 @@
 from config import emailSenderUsername, emailSenderPassword, emailRecipient, emailRecipient2, approvedUser, approvedUser2, approvedUser3
+username = 'null'
 
 def SendSmallStartEmail(user):
+   global username
+   username = user
+   print username
    import subprocess
    import smtplib
    import socket
@@ -34,6 +38,8 @@ def SendSmallStartEmail(user):
    smtpserver.quit()
 
 def SendLargeStartEmail(user):
+   global username
+   username = user
    import subprocess
    import smtplib
    import socket
@@ -67,6 +73,8 @@ def SendLargeStartEmail(user):
    smtpserver.quit()
 
 def SendThermosStartEmail(user):
+   global username
+   username = user
    import subprocess
    import smtplib
    import socket
@@ -100,16 +108,18 @@ def SendThermosStartEmail(user):
    smtpserver.quit()
 
 
-def SendCoffeeDoneEmail(user):
+def SendCoffeeDoneEmail():
+   global username
+   print username
    import subprocess
    import smtplib
    import socket
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   if user == approvedUser() or user == approvedUser2():
+   if username == approvedUser() or username == approvedUser2():
       to = emailRecipient()
-   if user == approvedUser3():
+   if username == approvedUser3():
       to = emailRecipient2()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()

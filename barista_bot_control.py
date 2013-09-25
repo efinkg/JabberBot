@@ -64,4 +64,3 @@ def barista_makeCoffee(order, user):
 #if len(orderList) == 1 and orderList[1] == 'stop':
 #    do_command('killall')
 #    print '/echo /push Stopping Coffee'
-

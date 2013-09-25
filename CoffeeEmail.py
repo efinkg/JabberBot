@@ -1,13 +1,16 @@
-from config import emailSenderUsername, emailSenderPassword, emailRecipient
+from config import emailSenderUsername, emailSenderPassword, emailRecipient, emailRecipient2, approvedUser, approvedUser2, approvedUser3
 
-def SendSmallStartEmail():
+def SendSmallStartEmail(user):
    import subprocess
    import smtplib
    import socket
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = emailRecipient()
+   if user == approvedUser() or user == approvedUser2():
+      to = emailRecipient()
+   if user == approvedUser3():
+      to = emailRecipient2()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -30,14 +33,17 @@ def SendSmallStartEmail():
    smtpserver.sendmail(gmail_user, [to], msg.as_string())
    smtpserver.quit()
 
-def SendLargeStartEmail():
+def SendLargeStartEmail(user):
    import subprocess
    import smtplib
    import socket
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = emailRecipient()
+   if user == approvedUser() or user == approvedUser2():
+      to = emailRecipient()
+   if user == approvedUser3():
+      to = emailRecipient2()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -60,14 +66,17 @@ def SendLargeStartEmail():
    smtpserver.sendmail(gmail_user, [to], msg.as_string())
    smtpserver.quit()
 
-def SendThermosStartEmail():
+def SendThermosStartEmail(user):
    import subprocess
    import smtplib
    import socket
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = emailRecipient()
+   if user == approvedUser() or user == approvedUser2():
+      to = emailRecipient()
+   if user == approvedUser3():
+      to = emailRecipient2()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -91,14 +100,17 @@ def SendThermosStartEmail():
    smtpserver.quit()
 
 
-def SendCoffeeDoneEmail():
+def SendCoffeeDoneEmail(user):
    import subprocess
    import smtplib
    import socket
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = emailRecipient()
+   if user == approvedUser() or user == approvedUser2():
+      to = emailRecipient()
+   if user == approvedUser3():
+      to = emailRecipient2()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -121,14 +133,17 @@ def SendCoffeeDoneEmail():
    smtpserver.sendmail(gmail_user, [to], msg.as_string())
    smtpserver.quit()
 
-def SendCoffeeCancelledEmail():
+def SendCoffeeCancelledEmail(user):
    import subprocess
    import smtplib
    import socket
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   to = emailRecipient()
+   if user == approvedUser() or user == approvedUser2():
+      to = emailRecipient()
+   if user == approvedUser3():
+      to = emailRecipient2()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)

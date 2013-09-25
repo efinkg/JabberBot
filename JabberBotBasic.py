@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 from jabberbot import JabberBot, botcmd
 from barista_bot_control import barista_makeCoffee, saidPlease
-from config import jabberUsername, jabberPassword, approvedUser, approvedUser2
+from config import jabberUsername, jabberPassword, approvedUser, approvedUser2, approvedUser3
 from howMuch import coffeeMade, coffeeMadeTotal
 import datetime
 import sys
@@ -50,8 +50,10 @@ class SystemInfoJabberBot(JabberBot):
         '''Makes Coffee'''
         user = mess.getFrom().getStripped()
         order = mess.getBody()
-        if user == approvedUser() or approvedUser2() or saidPlease(order) == 'yes':
-            barista_makeCoffee(order)
+        print user
+        if user == approvedUser() or user == approvedUser2() or user == approvedUser3() or saidPlease(order) == 'yes':
+            print 'Approved'
+            barista_makeCoffee(order, user)
             #return str(mess)
             return 'I have forwarded your order to the barista.'
         return 'Say Please.'

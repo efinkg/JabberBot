@@ -4,9 +4,7 @@ import sys
 import os
 import threading
 from coffeetimethreading import CoffeeMaker
-from CoffeeEmail import SendSmallStartEmail
-from CoffeeEmail import SendLargeStartEmail
-from CoffeeEmail import SendCoffeeCancelledEmail
+from CoffeeEmail import SendSmallStartEmail, SendLargeStartEmail, SendThermosStartEmail, SendCoffeeCancelledEmail
 
 coffee_maker = CoffeeMaker()
 
@@ -21,8 +19,9 @@ def saidPlease(order):
         return 'yes'
     return 'no'
 
-def barista_makeCoffee(order):
+def barista_makeCoffee(order, user):
     orderList = order.split(" ")
+    print orderList
     #print orderList
 
     if len(orderList) > 1:   # and orderList[0] == 'barista' or orderList[0] == 'Barista':
@@ -36,22 +35,22 @@ def barista_makeCoffee(order):
             if len(orderList) > 4 and orderList[3] == 'large' or orderList[3] == 'pot': #natural systax
                 #do_command('coffeelarge')
                 size = 33
-                coffee_maker.makeCoffee(size)
-                SendLargeStartEmail()
                 print 'Starting Large Coffee'
+                coffee_maker.makeCoffee(size)
+                SendLargeStartEmail(user)
                 
             if len(orderList) > 4 and orderList[3] == 'small' or orderList[3] == 'cup': #natural systax
                 #do_command('coffeesmall')
                 size = 14
-                coffee_maker.makeCoffee(size)
-                SendSmallStartEmail()
                 print 'Starting Small Coffee'
+                coffee_maker.makeCoffee(size)
+                SendSmallStartEmail(user)
 
             if len(orderList) > 4 and orderList[3] == 'thermos':
                 size = 20
+                print 'Starting a thermos of coffee'
                 coffee_maker.makeCoffee(size)
-                SendThermosStartEmail()
-                print 'Starting Small Coffee'
+                SendThermosStartEmail(user)
 
             #if len(orderList) == 4 and orderList[4] == 'coffee'
             #    do_command('coffee')
@@ -59,7 +58,7 @@ def barista_makeCoffee(order):
      
         if orderList[1] == 'stop':
             coffee_maker.force_stop()
-            SendCoffeeCancelledEmail()
+            SendCoffeeCancelledEmail(user)
             print 'Stopping Coffee'
         
 #if len(orderList) == 1 and orderList[1] == 'stop':

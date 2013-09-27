@@ -34,14 +34,14 @@ def barista_makeCoffee(order, user):
                 
             if len(orderList) > 4 and orderList[3] == 'large' or orderList[3] == 'pot': #natural systax
                 #do_command('coffeelarge')
-                size = 33
+                size = 32
                 print 'Starting Large Coffee'
                 coffee_maker.makeCoffee(size)
                 SendLargeStartEmail(user)
                 
             if len(orderList) > 4 and orderList[3] == 'small' or orderList[3] == 'cup': #natural systax
                 #do_command('coffeesmall')
-                size = 14
+                size = 13
                 print 'Starting Small Coffee'
                 coffee_maker.makeCoffee(size)
                 SendSmallStartEmail(user)

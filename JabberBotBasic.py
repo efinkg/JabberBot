@@ -22,20 +22,10 @@ class SystemInfoJabberBot(JabberBot):
         return str(datetime.datetime.now())
 
     @botcmd
-    def rot13( self, mess, args):
-        """Returns passed arguments rot13'ed"""
-        return args.encode('rot13')
-
-    @botcmd
     def whoami(self, mess, args):
         """Tells you your username"""
         return mess.getFrom().getStripped()
-    
-    @botcmd
-    def whoareyou(self, mess, args):
-        """Tells you your username"""
-        return mess.getTo().getStripped()
-    
+
     @botcmd
     def got(self, mess, args):
         """This is for Glass to stop Stupid Looping"""
@@ -45,9 +35,10 @@ class SystemInfoJabberBot(JabberBot):
             print 'Aint Nobody got Time for That'
         else:
             return 'Got milk?'
+
     @botcmd
     def alfred(self, mess, args):
-        '''Makes Coffee'''
+        '''Makes Coffee, messages take the form "Alfred make (me) a cup/thermos/pot (of coffee)" where words in parentheses are not required'''
         user = mess.getFrom().getStripped()
         order = mess.getBody()
         print user

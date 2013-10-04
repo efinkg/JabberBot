@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 from jabberbot import JabberBot, botcmd
 from barista_bot_control import barista_makeCoffee, saidPlease
-from config import jabberUsername, jabberPassword, approvedUser, approvedUser2, approvedUser3
+from config import jabberUsername, jabberPassword, approvedUser, approvedUser2, approvedUser3, approvedUser4
 from howMuch import coffeeMade, coffeeMadeTotal
 import datetime
 import sys

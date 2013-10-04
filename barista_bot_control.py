@@ -29,24 +29,26 @@ def barista_makeCoffee(order, user):
                             #Change this to the location/name of the desired first word of the jabber message
         #'barista make/start a small/large coffee"
         if orderList[1] == 'start' or orderList[1] == 'make': #natural systax
+            print len(orderList)
             if orderList[2] == 'me': #Allows use of 'Make a Coffee' or 'Make me a coffee" by dropping 'me' if it appears
                 del orderList[2]
                 
-            if len(orderList) > 4 and orderList[3] == 'large' or orderList[3] == 'pot': #natural systax
+            if len(orderList) > 3 and orderList[3] == 'large' or orderList[3] == 'pot': #natural systax
                 #do_command('coffeelarge')
-                size = 32
+                size = 29
                 print 'Starting Large Coffee'
                 coffee_maker.makeCoffee(size)
                 SendLargeStartEmail(user)
                 
-            if len(orderList) > 4 and orderList[3] == 'small' or orderList[3] == 'cup': #natural systax
+            if len(orderList) > 3 and orderList[3] == 'small' or orderList[3] == 'cup': #natural systax
                 #do_command('coffeesmall')
-                size = 13
+                size = 12
                 print 'Starting Small Coffee'
                 coffee_maker.makeCoffee(size)
                 SendSmallStartEmail(user)
 
-            if len(orderList) > 4 and orderList[3] == 'thermos':
+            if len(orderList) > 3 and orderList[3] == 'thermos':
+                print len(orderList)
                 size = 20
                 print 'Starting a thermos of coffee'
                 coffee_maker.makeCoffee(size)

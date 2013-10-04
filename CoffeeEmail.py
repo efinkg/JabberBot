@@ -1,4 +1,4 @@
-from config import emailSenderUsername, emailSenderPassword, emailRecipient, emailRecipient2, approvedUser, approvedUser2, approvedUser3
+from config import emailSenderUsername, emailSenderPassword, emailRecipient, emailRecipient3, emailRecipient4, approvedUser, approvedUser2, approvedUser3, approvedUser4
 username = 'null'
 
 def SendSmallStartEmail(user):
@@ -14,7 +14,9 @@ def SendSmallStartEmail(user):
    if user == approvedUser() or user == approvedUser2():
       to = emailRecipient()
    if user == approvedUser3():
-      to = emailRecipient2()
+      to = emailRecipient3()
+   if user == approvedUser4():
+      to = emailRecipient4()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -49,7 +51,9 @@ def SendLargeStartEmail(user):
    if user == approvedUser() or user == approvedUser2():
       to = emailRecipient()
    if user == approvedUser3():
-      to = emailRecipient2()
+      to = emailRecipient3()
+   if user == approvedUser4():
+      to = emailRecipient4()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -84,7 +88,9 @@ def SendThermosStartEmail(user):
    if user == approvedUser() or user == approvedUser2():
       to = emailRecipient()
    if user == approvedUser3():
-      to = emailRecipient2()
+      to = emailRecipient3()
+   if user == approvedUser4():
+      to = emailRecipient4()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -99,14 +105,13 @@ def SendThermosStartEmail(user):
    data = p.communicate()
    split_data = data[0].split()
    ipaddr = split_data[split_data.index('src')+1]
-   my_ip = 'I am Making You a Thermos of Coffee, Sir'
+   my_ip = 'I am Making you a Thermos of Coffee, Sir'
    msg = MIMEText(my_ip)
    msg['Subject'] = 'Coffee Time'
    msg['From'] = gmail_user
    msg['To'] = to
    smtpserver.sendmail(gmail_user, [to], msg.as_string())
    smtpserver.quit()
-
 
 def SendCoffeeDoneEmail():
    global username
@@ -120,7 +125,9 @@ def SendCoffeeDoneEmail():
    if username == approvedUser() or username == approvedUser2():
       to = emailRecipient()
    if username == approvedUser3():
-      to = emailRecipient2()
+      to = emailRecipient3()
+   if username == approvedUser4():
+      to = emailRecipient4()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -153,7 +160,9 @@ def SendCoffeeCancelledEmail(user):
    if user == approvedUser() or user == approvedUser2():
       to = emailRecipient()
    if user == approvedUser3():
-      to = emailRecipient2()
+      to = emailRecipient3()
+   if user == approvedUser4():
+      to = emailRecipient4()
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)

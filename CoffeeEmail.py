@@ -1,22 +1,29 @@
-from config import emailSenderUsername, emailSenderPassword, emailRecipient, emailRecipient3, emailRecipient4, approvedUser, approvedUser2, approvedUser3, approvedUser4
+import sys
+import csv
+from config import emailSenderUsername, emailSenderPassword
 username = 'null'
 
 def SendSmallStartEmail(user):
    global username
    username = user
-   print username
    import subprocess
    import smtplib
    import socket
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   if user == approvedUser() or user == approvedUser2():
-      to = emailRecipient()
-   if user == approvedUser3():
-      to = emailRecipient3()
-   if user == approvedUser4():
-      to = emailRecipient4()
+   with open('users.csv') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        for row in spamreader:
+            list(row)
+            userName = ['null','null']
+            userName[0] = row[1]
+            userName[1] = row[2]
+            #print userName[0]
+            #print str(username)
+            if str(username) == userName[0]:
+                to = userName[1]
+                break
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -48,12 +55,18 @@ def SendLargeStartEmail(user):
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   if user == approvedUser() or user == approvedUser2():
-      to = emailRecipient()
-   if user == approvedUser3():
-      to = emailRecipient3()
-   if user == approvedUser4():
-      to = emailRecipient4()
+   with open('users.csv') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        for row in spamreader:
+            list(row)
+            userName = ['null','null']
+            userName[0] = row[1]
+            userName[1] = row[2]
+            #print userName[0]
+            #print str(username)
+            if str(username) == userName[0]:
+                to = userName[1]
+                break
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -85,12 +98,18 @@ def SendThermosStartEmail(user):
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   if user == approvedUser() or user == approvedUser2():
-      to = emailRecipient()
-   if user == approvedUser3():
-      to = emailRecipient3()
-   if user == approvedUser4():
-      to = emailRecipient4()
+   with open('users.csv') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        for row in spamreader:
+            list(row)
+            userName = ['null','null']
+            userName[0] = row[1]
+            userName[1] = row[2]
+            #print userName[0]
+            #print str(username)
+            if str(username) == userName[0]:
+                to = userName[1]
+                break
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -122,12 +141,18 @@ def SendCoffeeDoneEmail():
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   if username == approvedUser() or username == approvedUser2():
-      to = emailRecipient()
-   if username == approvedUser3():
-      to = emailRecipient3()
-   if username == approvedUser4():
-      to = emailRecipient4()
+   with open('users.csv') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        for row in spamreader:
+            list(row)
+            userName = ['null','null']
+            userName[0] = row[1]
+            userName[1] = row[2]
+            #print userName[0]
+            #print str(username)
+            if str(username) == userName[0]:
+                to = userName[1]
+                break
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -157,12 +182,18 @@ def SendCoffeeCancelledEmail(user):
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   if user == approvedUser() or user == approvedUser2():
-      to = emailRecipient()
-   if user == approvedUser3():
-      to = emailRecipient3()
-   if user == approvedUser4():
-      to = emailRecipient4()
+   with open('users.csv') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        for row in spamreader:
+            list(row)
+            userName = ['null','null']
+            userName[0] = row[1]
+            userName[1] = row[2]
+            #print userName[0]
+            #print str(username)
+            if str(username) == userName[0]:
+                to = userName[1]
+                break
    gmail_user = emailSenderUsername()
    gmail_password = emailSenderPassword()
    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)

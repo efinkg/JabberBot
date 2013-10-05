@@ -8,28 +8,14 @@ from CoffeeEmail import SendSmallStartEmail, SendLargeStartEmail, SendThermosSta
 
 coffee_maker = CoffeeMaker()
 
-def saidPlease(order):
+def barista_makeCoffee(order, user, time):
     orderList = order.split(" ")
-    listLength = len(orderList)
-    print orderList[(listLength-1)]
-    if orderList[1] == 'stop':
-            return 'yes'
-    if orderList[(listLength-1)] == 'please' or orderList[(listLength-1)] == 'Please':
-        print 'yes'
-        return 'yes'
-    return 'no'
-
-def barista_makeCoffee(order, user):
-    orderList = order.split(" ")
-    print orderList
-    #print orderList
 
     if len(orderList) > 1:   # and orderList[0] == 'barista' or orderList[0] == 'Barista':
                             # I am removing this word to make changing the name of the Press easier
                             #Change this to the location/name of the desired first word of the jabber message
         #'barista make/start a small/large coffee"
         if orderList[1] == 'start' or orderList[1] == 'make': #natural systax
-            print len(orderList)
             if orderList[2] == 'me': #Allows use of 'Make a Coffee' or 'Make me a coffee" by dropping 'me' if it appears
                 del orderList[2]
                 
@@ -37,21 +23,21 @@ def barista_makeCoffee(order, user):
                 #do_command('coffeelarge')
                 size = 29
                 print 'Starting Large Coffee'
-                coffee_maker.makeCoffee(size)
+                coffee_maker.makeCoffee(size, user, time)
                 SendLargeStartEmail(user)
                 
             if len(orderList) > 3 and orderList[3] == 'small' or orderList[3] == 'cup': #natural systax
                 #do_command('coffeesmall')
                 size = 12
                 print 'Starting Small Coffee'
-                coffee_maker.makeCoffee(size)
+                coffee_maker.makeCoffee(size, user, time)
                 SendSmallStartEmail(user)
 
             if len(orderList) > 3 and orderList[3] == 'thermos':
                 print len(orderList)
                 size = 20
                 print 'Starting a thermos of coffee'
-                coffee_maker.makeCoffee(size)
+                coffee_maker.makeCoffee(size, user, time)
                 SendThermosStartEmail(user)
 
             #if len(orderList) == 4 and orderList[4] == 'coffee'

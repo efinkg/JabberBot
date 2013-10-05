@@ -1,9 +1,13 @@
 #! /usr/bin/env python
 from jabberbot import JabberBot, botcmd
-from barista_bot_control import barista_makeCoffee, saidPlease
-from config import jabberUsername, jabberPassword, approvedUser, approvedUser2, approvedUser3, approvedUser4
+from approved import approve, saidPlease
+from barista_bot_control import barista_makeCoffee
+from config import timeZone, jabberUsername, jabberPassword
+from currentlyMaking import isOn
 from howMuch import coffeeMade, coffeeMadeTotal
 import datetime
+import dateutil
+from dateutil import tz
 import sys
 import os
 
@@ -19,7 +23,8 @@ class SystemInfoJabberBot(JabberBot):
     @botcmd
     def time( self, mess, args):
         """Displays current server time"""
-        return str(datetime.datetime.now())
+        time = datetime.datetime.now(dateutil.tz.gettz(timeZone()))
+        return str(time)
 
     @botcmd
     def whoami(self, mess, args):
@@ -40,11 +45,11 @@ class SystemInfoJabberBot(JabberBot):
     def alfred(self, mess, args):
         '''Makes Coffee, messages take the form "Alfred make (me) a cup/thermos/pot (of coffee)" where words in parentheses are not required'''
         user = mess.getFrom().getStripped()
+        time = datetime.datetime.now(dateutil.tz.gettz(timeZone()))
         order = mess.getBody()
-        print user
-        if user == approvedUser() or user == approvedUser2() or user == approvedUser3() or saidPlease(order) == 'yes':
-            print 'Approved'
-            barista_makeCoffee(order, user)
+        approval = approve(user)
+        if approval == 'approved' or saidPlease(order) == 'yes':
+            barista_makeCoffee(order, user, time)
             #return str(mess)
             return 'I have forwarded your order to the barista.'
         return 'Say Please.'

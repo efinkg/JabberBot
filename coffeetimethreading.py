@@ -48,9 +48,9 @@ class CoffeeMaker(object):
            self.on_after_wait(0, (12/5)*self.ozCoffee, SOLENOID)
            self.add_timer(Timer(180, self.finish))
 
-    def makeCoffee(self, ozCoffee):
+    def makeCoffee(self, ozCoffee, user, time):
         self.stopping = False
-        makingCoffee(ozCoffee)
+        makingCoffee(ozCoffee, user, time)
         self.ozCoffee = ozCoffee
         #times in comments are relative to WHEN THIS METHOD IS CALLED
         self.on_after_wait(0, (17./5.)*self.ozCoffee, PUMP) #imediately pump for 42 seconds

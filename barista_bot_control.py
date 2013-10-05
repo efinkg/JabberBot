@@ -4,12 +4,13 @@ import sys
 import os
 import threading
 from coffeetimethreading import CoffeeMaker
-from CoffeeEmail import SendSmallStartEmail, SendLargeStartEmail, SendThermosStartEmail, SendCoffeeCancelledEmail
+from CoffeeEmail import SendSmallStartEmail, SendLargeStartEmail, SendThermosStartEmail, SendCoffeeCancelledEmail, SendTwoCupStartEmail
 
 coffee_maker = CoffeeMaker()
 
 def barista_makeCoffee(order, user, time):
     orderList = order.split(" ")
+    print orderList
 
     if len(orderList) > 1:   # and orderList[0] == 'barista' or orderList[0] == 'Barista':
                             # I am removing this word to make changing the name of the Press easier
@@ -39,6 +40,14 @@ def barista_makeCoffee(order, user, time):
                 print 'Starting a thermos of coffee'
                 coffee_maker.makeCoffee(size, user, time)
                 SendThermosStartEmail(user)
+
+            if len(orderList) > 4 and orderList[2] == 'two' and orderList[3] =='cups':
+                print len(orderList)
+                size = 26
+                print 'Starting two cups of coffee'
+                coffee_maker.makeCoffee(size, user, time)
+                SendTwoCupStartEmail(user)
+
 
             #if len(orderList) == 4 and orderList[4] == 'coffee'
             #    do_command('coffee')

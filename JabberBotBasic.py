@@ -48,7 +48,8 @@ class SystemInfoJabberBot(JabberBot):
         time = datetime.datetime.now(dateutil.tz.gettz(timeZone()))
         order = mess.getBody()
         approval = approve(user)
-        if approval == 'approved' or saidPlease(order) == 'yes':
+        if approval == 'approved' or approval == 'full_approval' or saidPlease(order) == 'yes':
+            print 'approved'
             barista_makeCoffee(order, user, time)
             #return str(mess)
             return 'I have forwarded your order to the barista.'
@@ -67,7 +68,8 @@ class SystemInfoJabberBot(JabberBot):
     def howmuchtotal(self, mess, args):
         '''How much coffee has been made ever'''
         user = mess.getFrom().getStripped()
-        if user == approvedUser() or approvedUser2():
+        approval = approve(user)
+        if approval == 'full_approval':
             volMadeTotal = coffeeMadeTotal()
             print volMadeTotal
             return 'I have made %d liters of coffee since I started counting' %volMadeTotal

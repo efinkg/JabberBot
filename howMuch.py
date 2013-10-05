@@ -21,7 +21,7 @@ def makingCoffee(ounce, user, time_stamp): #Pass variable 'ounce' in from Jabber
     global coffeeLiterTotal
     #Loads current value of coffeeLiterTotal
 
-    with open('users.csv') as csvfile:
+    with open('/Code/JabberBot/users.csv') as csvfile:
             spamreader = csv.reader(csvfile, delimiter=',')
             for row in spamreader:
                 list(row)
@@ -79,6 +79,6 @@ def coffeeMadeTotal():
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             list(row)
-            coffeeLiterTotal = float(row[4])
+            coffeeLiterTotal = float(row[2])
     
     return coffeeLiterTotal

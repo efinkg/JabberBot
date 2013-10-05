@@ -12,7 +12,7 @@ def SendSmallStartEmail(user):
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   with open('users.csv') as csvfile:
+   with open('/Code/JabberBot/users.csv') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             list(row)
@@ -20,8 +20,8 @@ def SendSmallStartEmail(user):
             userName[0] = row[1]
             userName[1] = row[2]
             #print userName[0]
-            #print str(username)
-            if str(username) == userName[0]:
+            #print username
+            if username == str(userName[0]):
                 to = userName[1]
                 break
    gmail_user = emailSenderUsername()
@@ -55,7 +55,7 @@ def SendTwoCupStartEmail(user):
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   with open('users.csv') as csvfile:
+   with open('/Code/JabberBot/users.csv') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             list(row)
@@ -63,8 +63,8 @@ def SendTwoCupStartEmail(user):
             userName[0] = row[1]
             userName[1] = row[2]
             #print userName[0]
-            #print str(username)
-            if str(username) == userName[0]:
+            #print username
+            if username == str(userName[0]):
                 to = userName[1]
                 break
    gmail_user = emailSenderUsername()
@@ -98,7 +98,7 @@ def SendLargeStartEmail(user):
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   with open('users.csv') as csvfile:
+   with open('/Code/JabberBot/users.csv') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             list(row)
@@ -106,8 +106,8 @@ def SendLargeStartEmail(user):
             userName[0] = row[1]
             userName[1] = row[2]
             #print userName[0]
-            #print str(username)
-            if str(username) == userName[0]:
+            #print username
+            if username == str(userName[0]):
                 to = userName[1]
                 break
    gmail_user = emailSenderUsername()
@@ -141,7 +141,7 @@ def SendThermosStartEmail(user):
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   with open('users.csv') as csvfile:
+   with open('/Code/JabberBot/users.csv') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             list(row)
@@ -149,8 +149,8 @@ def SendThermosStartEmail(user):
             userName[0] = row[1]
             userName[1] = row[2]
             #print userName[0]
-            #print str(username)
-            if str(username) == userName[0]:
+            #print username
+            if username == str(userName[0]):
                 to = userName[1]
                 break
    gmail_user = emailSenderUsername()
@@ -184,7 +184,7 @@ def SendCoffeeDoneEmail():
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   with open('users.csv') as csvfile:
+   with open('/Code/JabberBot/users.csv') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             list(row)
@@ -192,8 +192,8 @@ def SendCoffeeDoneEmail():
             userName[0] = row[1]
             userName[1] = row[2]
             #print userName[0]
-            #print str(username)
-            if str(username) == userName[0]:
+            #print username
+            if username == str(userName[0]):
                 to = userName[1]
                 break
    gmail_user = emailSenderUsername()
@@ -219,13 +219,15 @@ def SendCoffeeDoneEmail():
    smtpserver.quit()
 
 def SendCoffeeCancelledEmail(user):
+   print str(user)
+   username = user
    import subprocess
    import smtplib
    import socket
    from email.mime.text import MIMEText
    import datetime
    # Change to your own account information
-   with open('users.csv') as csvfile:
+   with open('/Code/JabberBot/users.csv') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             list(row)
@@ -233,8 +235,8 @@ def SendCoffeeCancelledEmail(user):
             userName[0] = row[1]
             userName[1] = row[2]
             #print userName[0]
-            #print str(username)
-            if str(username) == userName[0]:
+            #print username
+            if username == str(userName[0]):
                 to = userName[1]
                 break
    gmail_user = emailSenderUsername()

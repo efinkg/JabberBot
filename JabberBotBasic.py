@@ -48,6 +48,7 @@ class SystemInfoJabberBot(JabberBot):
         time = datetime.datetime.now(dateutil.tz.gettz(timeZone()))
         order = mess.getBody()
         approval = approve(user)
+        print 'looking for approval'
         if approval == 'approved' or approval == 'full_approval' or saidPlease(order) == 'yes':
             print 'approved'
             barista_makeCoffee(order, user, time)
@@ -70,6 +71,7 @@ class SystemInfoJabberBot(JabberBot):
         user = mess.getFrom().getStripped()
         approval = approve(user)
         if approval == 'full_approval':
+            print 'approved for full access'
             volMadeTotal = coffeeMadeTotal()
             print volMadeTotal
             return 'I have made %d liters of coffee since I started counting' %volMadeTotal

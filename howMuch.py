@@ -3,6 +3,7 @@ import csv
 import datetime
 import dateutil
 from dateutil import tz
+from databaseQuery import findNickname
 
 
 coffeeLiter = 0. #Clears variables.  Honestly, probably not important
@@ -21,18 +22,8 @@ def makingCoffee(ounce, user, time_stamp): #Pass variable 'ounce' in from Jabber
     global coffeeLiterTotal
     #Loads current value of coffeeLiterTotal
 
-    with open('/Code/JabberBot/users.csv') as csvfile:
-            spamreader = csv.reader(csvfile, delimiter=',')
-            for row in spamreader:
-                list(row)
-                userName = ['null','null','null']
-                userName[0] = row[0] #Nickname
-                userName[1] = row[1] #Jabber Username
-                userName[2] = row[2] #Email Account
-                if str(user) == userName[1]:
-                    nickName = userName[0]
-                    #print 'I have picked a nickname'
-                    break
+    nickName = findNickname(user)
+    print nickName
 
     #print 'I have gotten to the date split'
     timestr = str(time_stamp)

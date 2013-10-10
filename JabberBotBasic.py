@@ -4,6 +4,7 @@ from approved import approve, saidPlease
 from barista_bot_control import barista_makeCoffee
 from config import timeZone, jabberUsername, jabberPassword
 from currentlyMaking import isOn
+from databaseQuery import findPermissions
 from howMuch import coffeeMade, coffeeMadeTotal
 import datetime
 import dateutil
@@ -69,7 +70,7 @@ class SystemInfoJabberBot(JabberBot):
     def howmuchtotal(self, mess, args):
         '''How much coffee has been made ever'''
         user = mess.getFrom().getStripped()
-        approval = approve(user)
+        approval = findPermissions(user)
         if approval == 'full_approval':
             print 'approved for full access'
             volMadeTotal = coffeeMadeTotal()

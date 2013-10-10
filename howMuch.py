@@ -29,6 +29,16 @@ def makingCoffee(ounce, user, time_stamp): #Pass variable 'ounce' in from Jabber
     timestr = str(time_stamp)
     date, time = timestr.split(" ",1) #date is the part of the split string before the space, time is the part after the space
     timeMade, utcCorrection = time.split(".", 1) #timeMade is the part of the time string before the period
+    print date
+    year, month, day = (int(x) for x in date.split('-'))
+    print str(day)
+    print str(month)
+    print str(year)
+    weekDay= datetime.date(year,month,day)
+    print str(weekDay)
+    dayOfWeek = weekDay.strftime("%A")
+    print dayOfWeek
+    
     #print str(date)
     #print str(timeMade)
     
@@ -46,7 +56,7 @@ def makingCoffee(ounce, user, time_stamp): #Pass variable 'ounce' in from Jabber
     #Writes current value of coffeeLiterTotal
     with open('/Code/JabberBot/useageData/coffeeMade.csv','ab') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',')
-        spamwriter.writerow([str(nickName), str(ounce), str(coffeeLiterTotal), str(date), str(timeMade)])
+        spamwriter.writerow([str(nickName), str(ounce), str(coffeeLiterTotal), dayOfWeek, str(day), str(month), str(year), str(timeMade)])
 '''        
     with open('makingCoffee.csv','w') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',')

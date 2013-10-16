@@ -2,6 +2,7 @@
 from jabberbot import JabberBot, botcmd
 from approved import approve, saidPlease
 from barista_bot_control import barista_makeCoffee
+from barista_bot_tea import barista_makeTea
 from config import timeZone, jabberUsername, jabberPassword
 from currentlyMaking import isOn
 from databaseQuery import findPermissions
@@ -77,6 +78,22 @@ class SystemInfoJabberBot(JabberBot):
             print volMadeTotal
             return 'I have made %d liters of coffee since I started counting' %volMadeTotal
         return 'I am sorry, sir, that is strictly need-to-know'
+
+    @botcmd
+    def tea(self, mess, args):
+        '''Makes Coffee, messages take the form "Alfred make (me) a cup/thermos/pot (of coffee)" where words in parentheses are not required'''
+        user = mess.getFrom().getStripped()
+        time = datetime.datetime.now(dateutil.tz.gettz(timeZone()))
+        order = mess.getBody()
+        approval = approve(user)
+        print 'looking for approval'
+        if approval == 'approved' or approval == 'full_approval' or saidPlease(order) == 'yes':
+            print 'approved'
+            barista_makeTea(order, user, time)
+            #return str(mess)
+            return 'I have forwarded your order to the barista.'
+        return 'Say Please.'
+        
     
     '''
     @botcmd

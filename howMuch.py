@@ -54,7 +54,7 @@ def makingCoffee(ounce, user, time_stamp): #Pass variable 'ounce' in from Jabber
     #print str(coffeeLiterTotal)
     
     #Writes current value of coffeeLiterTotal
-    with open('/Code/JabberBot/useageData/coffeeMade.csv','ab') as csvfile:
+    with open('/Code/JabberBot/useageData/coffeeMaking.csv','wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',')
         spamwriter.writerow([str(nickName), str(ounce), str(coffeeLiterTotal), dayOfWeek, str(day), str(month), str(year), str(timeMade)])
 '''        
@@ -69,6 +69,59 @@ def finished():
         spamwriter = csv.writer(csvfile, delimiter=',')
         spamwriter.writerow(['null', 'null'])
 '''
+def madeCoffee(timeFinished):
+    with open('/Code/JabberBot/useageData/coffeeMaking.csv') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        for row in spamreader:
+            list(row)
+            print str(row)
+            nickName = row[0]
+            ounce = row[1]
+            coffeeLiterTotal = row[2]
+            dayOfWeek = row[3]
+            day = row[4]
+            month = row[5]
+            year = row[6]
+            timeMade = row[7]
+
+    timeFinishedstr = str(timeFinished)
+    dateFinished, timeFinished = timeFinishedstr.split(" ",1) #date is the part of the split string before the space, time is the part after the space
+    timeFinished, utcCorrection = timeFinished.split(".", 1) #timeMade is the part of the time string before the period
+
+    with open('/Code/JabberBot/useageData/coffeeMade.csv','ab') as csvfile:
+        spamwriter = csv.writer(csvfile, delimiter=',')
+        spamwriter.writerow([str(nickName), str(ounce), str(coffeeLiterTotal), dayOfWeek, str(day), str(month), str(year), str(timeMade),str(timeFinished)])
+
+def cancelledCoffee():
+    with open('/Code/JabberBot/useageData/coffeeMaking.csv') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        for row in spamreader:
+            list(row)
+            print str(row)
+            nickName = row[0]
+            ounce = row[1]
+            coffeeLiterTotal = row[2]
+            dayOfWeek = row[3]
+            day = row[4]
+            month = row[5]
+            year = row[6]
+            timeMade = row[7]
+
+    with open('/Code/JabberBot/useageData/coffeeMade.csv') as csvfileMade:
+        spamreaderMade = csv.reader(csvfileMade, delimiter=',')
+        for rowMade in spamreaderMade:
+            list(rowMade)
+            print str(rowMade)
+            coffeeLiterTotalMade = rowMade[2]
+            print str(coffeeLiterTotalMade)
+
+    print 'Writing to file'
+
+    with open('/Code/JabberBot/useageData/coffeeMade.csv','ab') as csvfile:
+        spamwriter = csv.writer(csvfile, delimiter=',')
+        spamwriter.writerow([str(nickName), str(ounce), str(coffeeLiterTotalMade), dayOfWeek, str(day), str(month), str(year), str(timeMade),'Cancelled'])
+
+            
 def coffeeMade():
     global cofeeLiter #Global variable
     return coffeeLiter
@@ -76,10 +129,11 @@ def coffeeMade():
 def coffeeMadeTotal():
     global coffeeLiterTotal #global coffeeLiterTotal #Global variable
     #Loads current value of coffeeLiterTotal
-    with open('/Code/JabberBot/useageData/coffeeMade.csv') as csvfile:
+    with open('/Code/JabberBot/useageData/coffeeMade.csv')as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             list(row)
+            print str(row)
             coffeeLiterTotal = float(row[2])
     
     return coffeeLiterTotal

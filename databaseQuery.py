@@ -33,14 +33,14 @@ def findPermissions(jabberAddress):
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
             list(row)
-            userName = ['null','null','null']
+            userName = ['null','null','null','null']
             userName[0] = row[0] #Nickname
             userName[1] = row[1] #Jabber Username
             userName[2] = row[2] #Email Account
-            userName[3] = row[3] #Email Account
+            userName[3] = row[3] #Permissions
             #print userName[0]
             #print username
-            if str(username) == userName[1]:
+            if str(jabberAddress) == userName[1]:
                     if userName[3] == 'Full':
                         print 'FullApproval'
                         return 'full_approval'

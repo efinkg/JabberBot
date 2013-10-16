@@ -48,6 +48,13 @@ def barista_makeCoffee(order, user, time):
                 coffee_maker.makeCoffee(size, user, time)
                 SendTwoCupStartEmail(user)
 
+            if len(orderList) > 3 and orderList[3] == 'ounce':
+                print len(orderList)
+                size = 1
+                print 'Starting an ounce of coffee'
+                coffee_maker.makeCoffee(size, user, time)
+                SendThermosStartEmail(user)
+
 
             #if len(orderList) == 4 and orderList[4] == 'coffee'
             #    do_command('coffee')
@@ -55,6 +62,7 @@ def barista_makeCoffee(order, user, time):
      
         if orderList[1] == 'stop':
             coffee_maker.force_stop()
+            print str(user)
             SendCoffeeCancelledEmail(user)
             print 'Stopping Coffee'
         

@@ -6,13 +6,13 @@ def timeZone():
     return 'timezone'
 
 def emailSenderUsername(): #This is the username emails are sent from
-    return 'username@sample.com'
+    return 'emailUsername@sample.com'
 
 def emailSenderPassword(): #This is the password to the email account emails are sent from
-    return 'password'
+    return 'emailPassword'
 
 def jabberUsername(): #This is the jabber account used for the JabberBot
-    return 'username@sample.com'
+    return 'jabberUsername@sample.com'
 
 def jabberPassword(): #This is the password for the jabber account used for the JabberBot
-    return 'password'
+    return 'jabberPassword'
